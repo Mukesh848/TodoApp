@@ -3,18 +3,17 @@ import { NavigationContainer } from '@react-navigation/native';
 import React from "react";
 import Navigationstrings from "../Navigation/Navigationstrings";
 import Home from "../Screens/Home/Home";
-// import index from '../Screens/index'
+import Addtask from "../Screens/Addtask/Addtask"
 
 
-
-function Routes(){
+function Routes()
+{
     const Stack= createNativeStackNavigator();
 return(
 <NavigationContainer>
     <Stack.Navigator>
         <Stack.Screen name={Navigationstrings.HOME} component={Home}/>
-        {/* <Stack.Screen name={Navigationstrings.ADD_TASK} component={}/> */}
-
+        <Stack.Screen name={Navigationstrings.ADD_TASK} component={Addtask}/>
     </Stack.Navigator>
 </NavigationContainer>
 )

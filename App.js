@@ -7,10 +7,7 @@ import Routes from "./src/Navigation/routes"
 function App(){
   return(
    <SafeAreaView style={Styles.container}>
-    <Routes />
-  
-      {/* <Home /> */}
-     
+    <Routes /> 
     </SafeAreaView>
   )
 }
