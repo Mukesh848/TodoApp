@@ -1,45 +1,60 @@
-import React from "react";
-import {View , Text, TouchableOpacity ,Image, FlatList} from "react-native";
+import React, { useEffect, useState } from "react";
+import { Image, Text, TouchableOpacity, View ,FlatList } from "react-native";
 import HeaderComp from "../../Components/HeaderComp";
-import { Styles } from "../../style/style";
 import imagePath from "../../constants/imagePath";
-import { verticalScale } from "../../style/responsiveSize";
-import Addtask from "../Addtask/Addtask";
 import Navigationstrings from "../../Navigation/Navigationstrings";
+import { Styles } from "../../style/style";
 
 
 
 function Home({navigation ,route}){
-  
-  console.log("values that passed in add task screen",route.params)
+  // const[data , setdata]=useState([])
+  // const fetchdata=()=>
+  // {
+  //   const Paramdata= route?.params
+  //   setdata(Paramdata)
+  // }
+
+  // useEffect(()=>{
+  //   fetchdata();
+  // },[data])
+  const Paramdata= route?.params
+  const renderItemfunction=({item , index})=>{
     return(
+      <View style={{alignItems:'center' ,backgroundColor:'#DCDCDC',height:100,justifyContent:'center' ,borderRadius:20}}>
+        <Text>Title:{item?.head}</Text>
+        <Text>description:{item.description}</Text>
+      </View>
+    )
+  }
+    
+  const emptyListFunction=()=>{
+      
+      return(
+        <View style={{alignItems:'center' ,backgroundColor:'#DCDCDC',height:100,justifyContent:'center' ,borderRadius:20}}>
+          <Text style={{fontSize:20 }}>no task till now</Text>
+        </View>
+      )
+    }
+ 
+    
+    
+  
+  return(
         <View style={Styles.container}>
           <HeaderComp 
           title="To Do List"
           />
-         
-      {/* <FlatList
-      data={dataTitle}
-      renderItem={(item , index)=>{
+     
+      <FlatList
+      data={Paramdata}
+      renderItem={renderItemfunction}
+      ListEmptyComponent={emptyListFunction}
+      />
 
-        // return
-        // (
-        //   <View>
-        //      <Text>{item.head}</Text>
-        //   </View>
-
-        // )
-        return(
-          <View>
-            <Text>{item.title}</Text>
-          </View>
-        )
-      }}
-    >
-
-      </FlatList> */}
+ 
           <TouchableOpacity style={Styles.Image} onPress={()=>{
-            navigation.navigate(Navigationstrings.ADD_TASK)
+            navigation.navigate(Navigationstrings.ADD_TASK )
           }}>
             <Image style={{height:100, width:100 ,borderRadius:50}} source={imagePath.iadd}></Image>
           

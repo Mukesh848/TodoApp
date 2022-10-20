@@ -21,6 +21,9 @@ function Addtask({navigation , routes}){
         alert("enter the description")
         return;
     }
+    if(title!='' && desc!=""){
+        navigation.navigate(Navigationstrings.HOME ,[{head:title , description:desc}])
+    }
   }
 
     return(
@@ -46,7 +49,8 @@ function Addtask({navigation , routes}){
            txtInputstyle={{height:150}} />
         <View style={Styles.container}>
             <TouchableOpacity style={Styles.savebtn} onPress={()=>{
-                navigation.navigate(Navigationstrings.HOME ,{head:{title} , description:{desc}})
+                validation();
+                
             }}>
                 <Text style={{color:'Black'}}>SAVE</Text>
             </TouchableOpacity>
