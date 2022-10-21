@@ -47,6 +47,7 @@ function Addtask({navigation , route}){
     <TextInputComp
            value={desc}
            placeholder='Enter the description'
+           multiline={true}
            onChangeText={(desc)=>
             {
             setDesc(desc)

@@ -24,9 +24,9 @@ function Home({navigation ,route}){
   //render item function of flat list
   const renderItemfunction=({item , index})=>{
     return(
-      <View style={{alignItems:'center' ,backgroundColor:'#DCDCDC',height:100,justifyContent:'center' ,borderRadius:20, marginTop:30}}>
-        <Text>Title:{item?.head}</Text>
-        <Text>description:{item.description}</Text>
+      <View style={{backgroundColor:'#DCDCDC',justifyContent:'center' ,borderRadius:20, marginTop:30 ,paddingHorizontal:12 , paddingVertical:12}}>
+        <Text style={{fontSize:15}}>TITLE:{item?.head}</Text>
+        <Text style={{marginTop:10}}>DESCRIPTION:{item.description}</Text>
       </View>
     )
   }
@@ -35,7 +35,7 @@ function Home({navigation ,route}){
   const emptyListFunction=()=>{
       
       return(
-        <View style={{alignItems:'center' ,backgroundColor:'#DCDCDC',height:100,justifyContent:'center' ,borderRadius:20}}>
+        <View style={{alignItems:'center' ,backgroundColor:'#DCDCDC',height:60,justifyContent:'center' ,borderRadius:20}}>
           <Text style={{fontSize:20 }}>no task till now</Text>
         </View>
       )

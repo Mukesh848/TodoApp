@@ -9,7 +9,8 @@ const TextInputComp=(
     value ,
   placeholder={},
     onChangeText=()=>{},
-    txtInputstyle
+    txtInputstyle,
+    multiline
 }
 )=>
 {
@@ -19,6 +20,7 @@ const TextInputComp=(
             value={value}
             placeholder={placeholder}
             onChangeText={onChangeText}
+            multiline={multiline}
             style={{...Styles.txtInputstyle,...txtInputstyle}}
             >
             </TextInput>
