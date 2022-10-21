@@ -5,29 +5,33 @@ import imagePath from "../../constants/imagePath";
 import Navigationstrings from "../../Navigation/Navigationstrings";
 import { Styles } from "../../style/style";
 
-
-
 function Home({navigation ,route}){
-  // const[data , setdata]=useState([])
-  // const fetchdata=()=>
-  // {
-  //   const Paramdata= route?.params
-  //   setdata(Paramdata)
-  // }
+  const[data , setdata]=useState([])
 
-  // useEffect(()=>{
-  //   fetchdata();
-  // },[data])
-  const Paramdata= route?.params
+  useEffect(()=>{
+    fetchdata();
+  },[route?.params])
+  const fetchdata=()=>
+  {
+    const Paramdata= route?.params
+    console.log("params from add task screen",Paramdata)
+    if(!!Paramdata){
+    setdata(Paramdata)
+  }
+  }
+
+  console.log("flat data",data)
+  //render item function of flat list
   const renderItemfunction=({item , index})=>{
     return(
-      <View style={{alignItems:'center' ,backgroundColor:'#DCDCDC',height:100,justifyContent:'center' ,borderRadius:20}}>
+      <View style={{alignItems:'center' ,backgroundColor:'#DCDCDC',height:100,justifyContent:'center' ,borderRadius:20, marginTop:30}}>
         <Text>Title:{item?.head}</Text>
         <Text>description:{item.description}</Text>
       </View>
     )
   }
-    
+
+  //empty list function of flat list
   const emptyListFunction=()=>{
       
       return(
@@ -36,33 +40,23 @@ function Home({navigation ,route}){
         </View>
       )
     }
- 
-    
-    
-  
   return(
         <View style={Styles.container}>
           <HeaderComp 
           title="To Do List"
           />
-     
       <FlatList
-      data={Paramdata}
+      data={data}
       renderItem={renderItemfunction}
       ListEmptyComponent={emptyListFunction}
       />
-
- 
           <TouchableOpacity style={Styles.Image} onPress={()=>{
-            navigation.navigate(Navigationstrings.ADD_TASK )
+            navigation.navigate(Navigationstrings.ADD_TASK ,{homeData:data})
           }}>
             <Image style={{height:100, width:100 ,borderRadius:50}} source={imagePath.iadd}></Image>
-          
-          </TouchableOpacity>
-          
+          </TouchableOpacity> 
         </View>
     )
 }
-
 
 export default Home

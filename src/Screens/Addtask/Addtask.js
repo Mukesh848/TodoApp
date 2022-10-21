@@ -5,10 +5,14 @@ import { Styles } from "../../style/style";
 import HeaderComp from "../../Components/HeaderComp";
 import Navigationstrings from "../../Navigation/Navigationstrings";
 
-function Addtask({navigation , routes}){
-  const[title , setTitle]=useState('')
+function Addtask({navigation , route}){
+    
+    const prevData=route.params.homeData
+    console.log("previous data",prevData)
+  
+  
+    const[title , setTitle]=useState('')
   const[desc, setDesc]=useState('')
-
 
   function validation(){
     if(title=='')
@@ -22,7 +26,8 @@ function Addtask({navigation , routes}){
         return;
     }
     if(title!='' && desc!=""){
-        navigation.navigate(Navigationstrings.HOME ,[{head:title , description:desc}])
+        const currData=[{head:title , description:desc}]
+        navigation.navigate(Navigationstrings.HOME ,[...currData , ...prevData])
     }
   }
 

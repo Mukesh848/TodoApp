@@ -11,7 +11,7 @@ function Routes()
     const Stack= createNativeStackNavigator();
 return(
 <NavigationContainer>
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName={Navigationstrings.HOME}>
         <Stack.Screen name={Navigationstrings.HOME} component={Home}/>
         <Stack.Screen name={Navigationstrings.ADD_TASK} component={Addtask}/>
     </Stack.Navigator>
